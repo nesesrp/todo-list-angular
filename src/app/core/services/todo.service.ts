@@ -30,4 +30,14 @@ export class TodoService {
   remove(id: number): void {
     this.todosSignal.update(todos => todos.filter(todo => todo.id !== id));
   }
+
+  edit(id: number, title: string): void {
+    const trimmed = title.trim();
+    if (!trimmed) {
+      return;
+    }
+    this.todosSignal.update(todos =>
+      todos.map(todo => (todo.id === id ? { ...todo, title: trimmed } : todo))
+    );
+  }
 }
