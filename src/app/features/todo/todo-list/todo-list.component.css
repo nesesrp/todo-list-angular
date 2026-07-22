@@ -1,0 +1,9 @@
+.todo-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-state {
+  opacity: 0.6;
+  font-style: italic;
+}
