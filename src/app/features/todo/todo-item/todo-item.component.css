@@ -1,0 +1,19 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.todo-item.completed .title {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.title {
+  flex: 1;
+}
+
+.edit-input {
+  flex: 1;
+}
