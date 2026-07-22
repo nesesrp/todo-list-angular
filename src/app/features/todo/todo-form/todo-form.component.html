@@ -1,1 +1,10 @@
-<p>todo-form works!</p>
+<form class="todo-form" (ngSubmit)="submit()">
+  <input
+    type="text"
+    name="title"
+    placeholder="Yeni görev ekle..."
+    [ngModel]="title()"
+    (ngModelChange)="title.set($event)"
+  />
+  <button type="submit">Ekle</button>
+</form>
