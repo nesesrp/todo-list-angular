@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  color-scheme: light dark;
+  --color-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-border: #d0d0d0;
+  --color-primary: #3f51b5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1a1a1a;
+    --color-text: #f0f0f0;
+    --color-border: #3a3a3a;
+    --color-primary: #7986cb;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+input,
+button {
+  font: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+button {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
