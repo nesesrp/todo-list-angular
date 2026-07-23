@@ -14,6 +14,7 @@ describe('TodoItemComponent', () => {
 
     fixture = TestBed.createComponent(TodoItemComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('todo', { id: 1, title: 'Buy milk', completed: false });
     fixture.detectChanges();
   });
 
