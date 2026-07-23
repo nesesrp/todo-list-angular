@@ -1,5 +1,11 @@
+<div class="filters">
+  <button type="button" [class.active]="filter() === 'all'" (click)="setFilter('all')">Tümü</button>
+  <button type="button" [class.active]="filter() === 'active'" (click)="setFilter('active')">Aktif</button>
+  <button type="button" [class.active]="filter() === 'completed'" (click)="setFilter('completed')">Tamamlanan</button>
+</div>
+
 @if (todos().length === 0) {
-  <p class="empty-state">Henüz bir görev yok.</p>
+  <p class="empty-state">Gösterilecek görev yok.</p>
 } @else {
   <div class="todo-list">
     @for (todo of todos(); track todo.id) {
