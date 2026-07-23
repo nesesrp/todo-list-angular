@@ -15,6 +15,8 @@ export class TodoListComponent {
 
   readonly filter = signal<Filter>('all');
 
+  readonly hasCompleted = computed(() => this.todoService.todos().some(todo => todo.completed));
+
   readonly todos = computed(() => {
     const todos = this.todoService.todos();
     switch (this.filter()) {
@@ -29,5 +31,9 @@ export class TodoListComponent {
 
   setFilter(filter: Filter): void {
     this.filter.set(filter);
+  }
+
+  clearCompleted(): void {
+    this.todoService.clearCompleted();
   }
 }

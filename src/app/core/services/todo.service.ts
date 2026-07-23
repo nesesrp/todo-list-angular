@@ -40,4 +40,8 @@ export class TodoService {
       todos.map(todo => (todo.id === id ? { ...todo, title: trimmed } : todo))
     );
   }
+
+  clearCompleted(): void {
+    this.todosSignal.update(todos => todos.filter(todo => !todo.completed));
+  }
 }

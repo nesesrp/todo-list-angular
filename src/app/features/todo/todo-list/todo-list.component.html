@@ -2,6 +2,9 @@
   <button type="button" [class.active]="filter() === 'all'" (click)="setFilter('all')">Tümü</button>
   <button type="button" [class.active]="filter() === 'active'" (click)="setFilter('active')">Aktif</button>
   <button type="button" [class.active]="filter() === 'completed'" (click)="setFilter('completed')">Tamamlanan</button>
+  @if (hasCompleted()) {
+    <button type="button" class="clear-completed" (click)="clearCompleted()">Tamamlananları temizle</button>
+  }
 </div>
 
 @if (todos().length === 0) {
