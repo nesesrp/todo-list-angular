@@ -1,14 +1,31 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, effect, signal } from '@angular/core';
 import { Todo } from '../models/todo.model';
+
+const STORAGE_KEY = 'todos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private readonly todosSignal = signal<Todo[]>([]);
-  private nextId = 1;
+  private readonly todosSignal = signal<Todo[]>(this.loadTodos());
+  private nextId = this.todosSignal().reduce((max, todo) => Math.max(max, todo.id), 0) + 1;
 
   readonly todos = this.todosSignal.asReadonly();
+
+  constructor() {
+    effect(() => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todosSignal()));
+    });
+  }
+
+  private loadTodos(): Todo[] {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  }
 
   add(title: string): void {
     const trimmed = title.trim();
